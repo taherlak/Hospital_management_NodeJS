@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- your webpage info goes here -->
+
+    <title>XYZ Hospital</title>
+
+	<meta name="author" content="Taher Lakdawala" />
+	<meta name="description" content="This application allows you to store patient related data and manipulate them." />
+
+	<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+<body>
+	<div id="page">
+    {{> header}}
+		<div id="content">
+      <h2><b>Please select a patient you want to discharge.</b></h2>
+      <form action="/dischargeControl" method="post" style="text-align:center;">
+        <label style="padding-left:30px; padding-right:30px;" for="names">Name:</label>
+          <select id="names" name="names" required>
+            {{#each data}}
+            {{#if this.Bed}}
+            <option style="padding-left:30px; padding-right:30px;">{{this.name}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
+          <input style="padding-left:30px; padding-right:30px;" type="submit" value="Submit"/>
+      </form>
+    </div>
+		<div id="footer">
+			<p>
+				Webpage made by <a href="/" target="_blank">Taher Lakdawala</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- your webpage info goes here -->
+
+    <title>XYZ Hospital</title>
+
+	<meta name="author" content="Taher Lakdawala" />
+	<meta name="description" content="This application allows you to store patient related data and manipulate them." />
+
+	<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+<body>
+	<div id="page">
+    {{> header}}
+		<div id="content">
+      <div style="padding-bottom:20px;">
+        <form action="/search_patient" method="post">
+          <label for="dateType">Date type* :</label>
+          <select id="dateType" name="dateType" required>
+            <option value="AdmitDate">Admit Date</option>
+            <option value="DischargeDate">Discharge Date</option>
+          </select>
+          <label for="fromDate">From :</label>
+          <input type="date" id="fromDate" name="fromDate"/>
+          <label for="toDate">To :</label>
+          <input type="date" id="toDate" name="toDate"/>
+          <input type="submit" value="Submit" />
+       </div>
+      </form>
+      <table class="imagetable" rules="groups" style="text-align:center; padding-top:25px; padding-bottom:25px;">
+        <tr>
+          <th>Name</th>
+          <th>Admit Date</th>
+          <th>Discharge Date
+          <th>Disease</th>
+          <th>Bed number</th>
+          <th>Status</th>
+        </tr>
+        {{#each data}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{formatDate this.AdmitDate}}</td>
+          {{#if this.DischargeDate}}
+          <td>{{formatDate this.DischargeDate}}</td>
+          {{else}}
+          <td>---------</td>
+          {{/if}}
+          <td>{{this.Disease}}</td>
+          {{#if this.Bed}}
+          <td>{{this.Bed}}</td>
+          {{else}}
+          <td>-----</td>
+          {{/if}}
+          <td>{{this.PatientStatus}}</td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+		<div id="footer">
+			<p>
+				Webpage made by <a href="/" target="_blank">Taher Lakdawala</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

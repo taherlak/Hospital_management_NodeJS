@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- your webpage info goes here -->
+
+    <title>XYZ Hospital</title>
+
+	<meta name="author" content="Taher Lakdawala" />
+	<meta name="description" content="This application allows you to store patient related data and manipulate them." />
+
+	<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+<body>
+	<div id="page">
+    {{> header}}
+		<div id="content">
+      <h2><b>Search via Admit/Discharge Date</b></h2>
+      <form action="/search_patient" method="post">
+        <label for="dateType">Date type* :</label>
+        <select id="dateType" name="dateType" required>
+          <option value="AdmitDate">Admit Date</option>
+          <option value="DischargeDate">Discharge Date</option>
+        </select>
+        <label for="fromDate">From* :</label>
+        <input type="date" id="fromDate" name="fromDate" required/>
+        <label for="toDate">To* :</label>
+        <input type="date" id="toDate" name="toDate" required/>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+		<div id="footer">
+			<p>
+				Webpage made by <a href="/" target="_blank">Taher Lakdawala</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>
