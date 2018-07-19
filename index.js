@@ -21,13 +21,6 @@ var con = connect_db.connect_sql();
 var avail_beds = 0;
 var isNoBed = false;
 
-// hbs.registerHelper('if', function(conditional, options) {
-//   if(conditional !== null) {
-//     return options.fn(this);
-//   }else {
-//     return options.inverse(this);
-//   }
-// });
 
 app.get('/',(req,res)=>{
   bed_info.available_beds(con).then((avail_bed)=>{
@@ -35,6 +28,9 @@ app.get('/',(req,res)=>{
     avail_beds = avail_bed;
     if(avail_bed === 0){
       isNoBed = true;
+      console.log("Here");
+    }else{
+      isNoBed = false;
     }
   }).catch((err)=>{
     if(err){
@@ -86,7 +82,7 @@ app.post('/search',(req,res)=>{
 
 app.post('/search_patient',(req,res)=>{
   get_data.display_custom_info(con,req).then((patient_custom_data)=>{
-    console.log(patient_custom_data);
+    //console.log(patient_custom_data);
     res.render('search_display.hbs',{
       data:patient_custom_data
     });
@@ -126,14 +122,3 @@ app.listen(port,(err)=>{
   }
   console.log('Server running on port: ' + port);
 });
-
-
-// const display_info = async (con)=>{
-//   //return new Promise((resolve,reject)=>{
-//   let patient_data;
-//     con.query('SELECT * FROM patient_info', function(err, rows, fields)
-//         {
-//             var patient_data = JSON.parse(JSON.stringify(rows));
-//             return Promise.resolve(patient_data);
-//         });
-//   };

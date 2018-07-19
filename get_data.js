@@ -18,9 +18,9 @@ var display_custom_info = (con,req) =>{
       var dateType = req.body.dateType;
       var fromDate = req.body.fromDate;
       var toDate = req.body.toDate;
-      console.log(req.body.fromDate,req.body.toDate);
+      //console.log(req.body.fromDate,req.body.toDate);
       var sql = "SELECT * FROM patient_info where "+dateType+" BETWEEN '"+fromDate+" 'AND '"+toDate+ "'";
-      console.log(sql);
+      //console.log(sql);
       con.query(sql,(err, rows, fields)=>{
               var patient_data = JSON.parse(JSON.stringify(rows));
               if(patient_data){

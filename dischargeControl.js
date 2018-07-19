@@ -6,7 +6,7 @@ var discharge_update = (con,req)=>{
     var admitMonth = new Date().getMonth()+1;
     var final_date = admityear + "-" + admitMonth + "-" + admitDate;
     var sql = "UPDATE patient_info SET DischargeDate = '"+final_date+"',Bed=null,PatientStatus='Discharged' where name='"+patient_name+"'";
-    console.log(sql);
+    //console.log(sql);
     con.query(sql,(error,result)=>{
       if(result){
         resolve("Data updated successfully");

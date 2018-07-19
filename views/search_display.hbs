@@ -4,7 +4,7 @@
 
 <!-- your webpage info goes here -->
 
-    <title>XYZ Hospital</title>
+    <title>Healthcare Hospital</title>
 
 	<meta name="author" content="Taher Lakdawala" />
 	<meta name="description" content="This application allows you to store patient related data and manipulate them." />
@@ -54,7 +54,11 @@
           {{else}}
           <td>-----</td>
           {{/if}}
-          <td>{{this.PatientStatus}}</td>
+          {{#if this.Bed}}
+          <td style="color:green;">{{this.PatientStatus}}</td>
+          {{else}}
+          <td style="color:red";>{{this.PatientStatus}}</td>
+          {{/if}}
         </tr>
         {{/each}}
       </table>

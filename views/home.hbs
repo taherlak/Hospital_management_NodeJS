@@ -4,7 +4,7 @@
 
 <!-- your webpage info goes here -->
 
-    <title>XYZ Hospital</title>
+    <title>Healthcare Hospital</title>
 
 	<meta name="author" content="Taher Lakdawala" />
 	<meta name="description" content="This application allows you to store patient related data and manipulate them." />
@@ -18,6 +18,7 @@
 		<div id="content">
       {{#if isNoBed}}
       <h1 align="right" style="color:red;">Beds available: {{beds}}</h1>
+      <h3 align="right" style="color:red;"><b>Sorry no Beds available!!</b></h3>
       {{else}}
       <h1 align="right">Beds available: {{beds}}</h1>
       {{/if}}
@@ -60,14 +61,22 @@
           {{else}}
           <td>-----</td>
           {{/if}}
-          <td>{{this.PatientStatus}}</td>
+          {{#if this.Bed}}
+          <td style="color:green;">{{this.PatientStatus}}</td>
+          {{else}}
+          <td style="color:red";>{{this.PatientStatus}}</td>
+          {{/if}}
         </tr>
         {{/each}}
       </table>
 
       <div style="width:500px; padding-left:350px; padding-bottom:25px; padding-top:25px;">
         <form action="/add" method="post" style="text-align: center; float:left; padding-left:30px; padding-right:30px;">
+          {{#if isNoBed}}
+          <input type="submit" value="Add new Patient" disabled/>
+          {{else}}
           <input type="submit" value="Add new Patient"/>
+          {{/if}}
         </form>
         <form action="/search" method="post" style="text-align: center; float:left; padding-left:30px; padding-right:30px;">
           <input type="submit" value="Search"/>

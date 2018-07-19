@@ -4,7 +4,7 @@
 
 <!-- your webpage info goes here -->
 
-    <title>Hospital</title>
+    <title>Healthcare Hospital</title>
 
 	<meta name="author" content="Taher Lakdawala" />
 	<meta name="description" content="This application allows you to store patient related data and manipulate them." />
@@ -16,11 +16,12 @@
 	<div id="page">
     {{> header}}
 		<div id="content">
+      <h2><b>Please enter patient information to add them.</b></h2>
       <form action="/insert" method="post">
         <label for="names">Name*:</label>
         <input type="text" id="names" name="names" placeholder="Enter your full name" required/>
         <label for="disease">Disease*:</label>
-        <input type="text" id="disease" name="disease" placeholder="Enter description of the diseasse" required/>
+        <input type="text" id="disease" name="disease" placeholder="Enter description of the disease" required/>
         <input type="submit" value="Submit" />
       </form>
     </div>
